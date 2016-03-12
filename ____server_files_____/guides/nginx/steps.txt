@@ -1,0 +1,1 @@
++ Directive --with-http_stub_status_module  needs to be added when running ./configure

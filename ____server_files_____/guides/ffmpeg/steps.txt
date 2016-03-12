@@ -1,0 +1,34 @@
++ Follow ffmpeg compilation guide
+PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
+  --prefix="$HOME/ffmpeg_build" \
+  --extra-cflags="-I$HOME/ffmpeg_build/include" \
+  --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
+  --bindir="$HOME/bin" \
+  --enable-gpl \
+  --enable-libass \
+  --enable-libfdk-aac \
+  --enable-libfreetype \
+  --enable-libmp3lame \
+  --enable-libopus \
+  --enable-libtheora \
+  --enable-libvorbis \
+  --enable-libvpx \
+  --enable-libx264 \
+  --enable-nonfree \
+  --enable-network \
+  --enable-protocol=tcp \
+  --enable-protocol=udp \
+  --enable-demuxer=rtsp \
+  --enable-decoder=h264 \
+  --enable-muxer=rtsp
+
+Optional:
+  --enable-libfaac \
+
+ - Before compiling ffmpeg:
+   + modify libavformat/http.c and set the default value of icy flag to 0:
+ { "icy", "request ICY metadata", OFFSET(icy), AV_OPT_TYPE_INT, { .i64 = 0 }, 0, 1, D }
+
+   + modify ffmpeg.c:
+  if (pkt->dts < max) {
+        int loglevel = AV_LOG_DEBUG; //max - pkt->dts > 2 || avctx->codec_type == AVMEDIA_TYPE_VIDEO ? AV_LOG_WARNING : AV_LOG_DEBUG;

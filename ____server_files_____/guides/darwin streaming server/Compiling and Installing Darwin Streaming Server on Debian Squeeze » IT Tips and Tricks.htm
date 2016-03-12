@@ -1,0 +1,754 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>  Compiling and Installing Darwin Streaming Server on Debian Squeeze  » IT Tips and Tricks</title>
+
+<link rel="stylesheet" href="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/style.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/print.css" type="text/css" media="print">
+<!--[if IE]><link rel="stylesheet" href="https://tipstricks.itmatrix.eu/wp-content/themes/gchrome/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
+
+<link rel="pingback" href="https://tipstricks.itmatrix.eu/xmlrpc.php">
+
+<link rel="alternate" type="application/rss+xml" title="IT Tips and Tricks » Feed" href="https://tipstricks.itmatrix.eu/feed/">
+<link rel="alternate" type="application/rss+xml" title="IT Tips and Tricks » Comments Feed" href="https://tipstricks.itmatrix.eu/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="IT Tips and Tricks » Compiling and Installing Darwin Streaming Server on Debian Squeeze Comments Feed" href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/feed/">
+<link rel="stylesheet" id="jetpack_css-css" href="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/jetpack.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpcirrus-cloudStyle-css" href="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/cirrusCloud.css" type="text/css" media="all">
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/wp_cirrus_gwt.js"></script><script defer="defer">wp_cirrus_gwt.onInjectionDone('wp_cirrus_gwt')</script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/jquery_004.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/jquery_002.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/pretty-comments.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://tipstricks.itmatrix.eu/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://tipstricks.itmatrix.eu/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Configuring Apache2 mod_deflate" href="https://tipstricks.itmatrix.eu/configuring-apache2-mod_deflate/">
+<link rel="next" title="Installing Google’s Apache mod_pagespeed module." href="https://tipstricks.itmatrix.eu/installing-googles-apache-mod_pagespeed-module/">
+<meta name="generator" content="WordPress 4.1.1">
+<link rel="canonical" href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/">
+<link rel="shortlink" href="https://wp.me/pKZRY-hM">
+<link rel="stylesheet" type="text/css" href="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/jquery.css">
+<link rel="dns-prefetch" href="https://jetpack.wordpress.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://public-api.wordpress.com/">
+<link rel="dns-prefetch" href="https://0.gravatar.com/">
+<link rel="dns-prefetch" href="https://1.gravatar.com/">
+<link rel="dns-prefetch" href="https://2.gravatar.com/">
+<link rel="dns-prefetch" href="https://widgets.wp.com/">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Compiling and Installing Darwin Streaming Server on Debian Squeeze ">
+<meta property="og:url" content="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/">
+<meta property="og:description" content="I used to run Darwin Streaming Server Version 5.5.5 and ran quite well. In order to be able to take advantage of the new features and stability of the 6.0.3 I tried to compile it in Debian Squeeze ...">
+<meta property="article:published_time" content="2012-09-25T16:25:56+00:00">
+<meta property="article:modified_time" content="2012-10-05T11:24:57+00:00">
+<meta property="article:author" content="https://tipstricks.itmatrix.eu/author/admin/">
+<meta property="og:site_name" content="IT Tips and Tricks">
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@jetpack">
+<meta name="twitter:card" content="summary">
+
+<style id="custom-css-css">code,pre{display:block;background:#ccc url('/code.gif') 0 0 no-repeat;border:1px solid #F09C57;margin:10px auto;padding:4px 4px 4px 15px;text-align:left;font:1.1em 'Courier', Courier;overflow:auto;color:#000;line-height:8px}</style>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/services.css"></head>
+<body class="single single-post postid-1102 single-format-standard">
+<div class="wrapper">
+<div class="container">
+  
+	<div class="headermenu span-24">
+			            <ul>
+            <li class="first firstcurrent"><a href="https://tipstricks.itmatrix.eu/" title="Home">Home</a></li>
+                            <li class="last">
+                <a href="https://tipstricks.itmatrix.eu/" title="About">About</a></li>
+    
+                        </ul>
+            	</div>
+  
+    <div class="header span-24">
+        <div class="alignright" style="width:310px">
+			<div id="searchbox">
+            <form method="get" id="searchform" action="https://tipstricks.itmatrix.eu/">
+			<input name="s" id="s" class="search_input" type="text">
+			<input src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/transparent.gif" id="searchsubmit" type="image">
+			</form>
+            </div>
+	        <a class="menubookmark" href="http://www.addthis.com/bookmark.php" title="Bookmark and Share"></a>
+            <a class="menufeed" href="https://tipstricks.itmatrix.eu/feed/" title="Subscribe Feed"></a>
+        </div>
+        <a class="menuhome" href="https://tipstricks.itmatrix.eu/" title="Home"></a>&nbsp;
+        <span class="blogtitle"><a href="https://tipstricks.itmatrix.eu/" title="Home">IT Tips and Tricks</a></span>
+    </div>
+    
+    <div class="msgbartop span-24"><img src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/msgbartop.gif" alt="msgbartop"></div>
+    <div class="msgbar span-24">
+		MAC OS X, Linux, Windows and other IT Tips and Tricks    </div>
+    <div class="msgbarbottom span-24"><img src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/msgbarbottom.gif" alt="msgbarbottom"></div>    
+    <div class="content span-16">
+           			<div class="post-1102 post type-post status-publish format-standard hentry category-linux-tips category-streaming" id="post-1102">
+				<div class="thecontent">
+                <h1 class="postheader">25 Sep 12 <a href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/" rel="bookmark" title="Permanent Link to Compiling and Installing Darwin Streaming Server on Debian Squeeze">Compiling and Installing Darwin Streaming Server on Debian Squeeze</a></h1>
+				<p>I used to run Darwin Streaming Server Version 5.5.5 and ran quite well.<br>
+In order to be able to take advantage of the new features and stability of the 6.0.3<br>
+I tried to compile it in Debian Squeeze Linux and it didn’t work at all.<br>
+I got many compiling warnings and errors which at the end didn’t allow me to compile it.<br>
+I looked in Internet for some solutions and found some that were offering patches before compiling<br>
+but that also didn’t work well. I got either errors during the patching or error during the compiling.<br>
+Then I came across this great page:<br>
+<a href="http://www.codeproject.com/Articles/41874/Darwin-Streaming-Server-6-0-3-setup-customization" title="Darwin Streaming Server Installation">http://www.codeproject.com/Articles/41874/Darwin-Streaming-Server-6-0-3-setup-customization</a><br>
+which offered more patches, replacement for Install script and an authentication module.<br>
+Thanks to the person who posted this page, and provided the patches etc. finally it did work and is now running.<br>
+So based on the information in this page I adapted it to fit to Debian Squeeze 64bit here below.</p>
+<p><strong>Note 1:</strong> I have stored the full source of the 
+StreamingServer 6.0.3 as well as the patches needed on my own server 
+just to make sure it is always available at least to me when I need it.</p>
+<p><strong>Note 2:</strong> I’m working here as root to avoid having to use sudo for every command.  </p>
+<p>Making sure you have the needed packages ready<br>
+<code>apt-get install build-essential wget unzip</code><br>
+Adding a new user and group (qtss:qtss)for running the server<br>
+<code>addgroup --system qtss<br>
+adduser --system --no-create-home --ingroup qtss qtss</code><br>
+Choose a directory where you’re going to compile the Darwin Streaming Server (DSS)<br>
+<code>mkdir /usr/local/src/DSS<br>
+cd /usr/local/src/DSS</code><br>
+Getting the DSS source:<br>
+<code>wget http://static.macosforge.org/dss/downloads/DarwinStreamingSrvr6.0.3-Source.tar</code><br>
+If the source is no more found there, then get it from my server:<br>
+<code>wget http://public.itmatrix.eu/Darwin_Streamer_6.0.3/DarwinStreamingSrvr6.0.3-Source.tar</code><br>
+Get the patches etc. needed.<br>
+<code>wget http://public.itmatrix.eu/Darwin_Streamer_6.0.3/Darwin_6.0.3_patches.zip</code><br>
+Uncompress the server source<br>
+<code>tar -xvf DarwinStreamingSrvr6.0.3-Source.tar</code><br>
+Uncompress the extra patches etc.<br>
+<code>unzip Darwin_6.0.3_patches.zip</code><br>
+Run the patches (makes it 64 bit compatible)<br>
+<code>patch -p0 &lt; Patches/dss-6.0.3.patch<br>
+patch -p0 &lt; Patches/dss-hh-20080728-1.patch</code><br>
+Build the server binaries (Ignore the many warnings)<br>
+It should build quite well, just verify that it does not end with an error.<br>
+<code>cd DarwinStreamingSrvr6.0.3-Source<br>
+./Buildit</code><br>
+Replace the install script wit the one extra provided<br>
+<code>mv Install Install.orig<br>
+cp ../Patches/Install .<br>
+chmod 755 Install</code><br>
+Install and start the server. Provide the administrator name and password(2x)<br>
+<code>./Install</code><br>
+Check that the server is running:<br>
+The server should run one process as root and 2 processes as qtss user.<br>
+<code>ps aux | grep treaming | grep -v grep</code><br>
+Example of results:<br>
+<code>root     22080  0.0  0.0  19500   592 ?        Ss   16:26   0:00 /usr/local/sbin/DarwinStreamingServer<br>
+qtss     22081  0.0  0.1  48352  5756 ?        Ss   16:26   0:00 /usr/bin/perl /usr/local/sbin/streamingadminserver.pl<br>
+qtss     22082  0.1  0.0 133508  3004 ?        Sl   16:26   0:13 /usr/local/sbin/DarwinStreamingServer</code></p>
+<p>If all above is as mentioned then your server is running and you can connect with the web administration with URL:<br>
+<code>http://www.myserver.com:1220</code>(Use the name and password of the administrator you gave previously)<br>
+This will go through a one-time sequence of a few setting screens.<br>
+Important: make sure you don't activate the port 80 if you have a web 
+server running on port 80 in the same host. It would create a port 
+conflict and DSS might not want to start at all.</p>
+<p><strong>START/STOP init Script</strong><br>
+In order to start and srop the server comfortably and with a reboot I 
+suggest the following init script that you would save as 
+/etc/init.d/DarwinStreamingServer:<br>
+<code><br>
+#! /bin/sh<br>
+### BEGIN INIT INFO<br>
+# Provides:          DarwinStreaming_server<br>
+# Required-Start:    $remote_fs<br>
+# Required-Stop:     $remote_fs<br>
+# Default-Start:     2 3 4 5<br>
+# Default-Stop:      0 1 6<br>
+# Short-Description: Apple Audio/Video(quictime) DarwinStreamingServer<br>
+# Description:       Start/Stop of DarwinStreamingServer<br>
+### END INIT INFO<br>
+#<br>
+# Author: Michel Bisson <michel@itmatrix.de><br>
+#<br>
+# Do NOT "set -e"<br>
+#<br>
+# PATH should only include /usr/* if it runs after the mountnfs.sh script<br>
+PATH=/sbin:/usr/sbin:/bin:/usr/bin<br>
+DESC="Description of the service"<br>
+NAME="DarwinStreamingServer"<br>
+DAEMON="/usr/local/sbin/streamingadminserver.pl"<br>
+DAEMON_ARGS=""<br>
+PIDFILE=/var/run/$NAME.pid<br>
+SCRIPTNAME=/etc/init.d/$NAME<br>
+#<br>
+# Exit if the package is not installed<br>
+[ -x "$DAEMON" ] || exit 0<br>
+#<br>
+# Read configuration variable file if it is present<br>
+[ -r /etc/default/$NAME ] &amp;&amp; . /etc/default/$NAME<br>
+#<br>
+# Load the VERBOSE setting and other rcS variables<br>
+. /lib/init/vars.sh<br>
+#<br>
+# Define LSB log_* functions.<br>
+# Depend on lsb-base (&gt;= 3.0-6) to ensure that this file is present.<br>
+. /lib/lsb/init-functions<br>
+#<br>
+#<br>
+# Function that starts the daemon/service<br>
+#<br>
+do_start()<br>
+{<br>
+	# Return<br>
+	#   0 if daemon has been started<br>
+	#   1 if daemon was already running<br>
+	#   2 if daemon could not be started<br>
+	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON --test &gt; /dev/null \<br>
+		|| return 1<br>
+	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON -- \<br>
+		$DAEMON_ARGS \<br>
+		|| return 2<br>
+        if (ps ax | egrep -v 'grep|sh' | grep -iq streaming); then<br>
+            echo "DarwinStreamingServer started"<br>
+        else<br>
+            echo "ERROR: DarwinStreamingServer NOT started"<br>
+        fi<br>
+	# Add code here, if necessary, that waits for the process to be ready<br>
+	# to handle requests from services started subsequently which depend<br>
+	# on this one.  As a last resort, sleep for some time.<br>
+}<br>
+#<br>
+# Function that stops the daemon/service<br>
+#<br>
+do_stop()<br>
+{<br>
+	# Return<br>
+	#   0 if daemon has been stopped<br>
+	#   1 if daemon was already stopped<br>
+	#   2 if daemon could not be stopped<br>
+	#   other if a failure occurred<br>
+	#start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE --name $NAME 2&gt;/dev/null<br>
+        kill $(pidof DarwinStreamingServer)<br>
+	RETVAL="$?"<br>
+	[ "$RETVAL" = 2 ] &amp;&amp; return 2<br>
+	# Wait for children to finish too if this is a daemon that forks<br>
+	# and if the daemon is only ever run from this initscript.<br>
+	# If the above conditions are not satisfied then add some other code<br>
+	# that waits for the process to drop all resources that could be<br>
+	# needed by services started subsequently.  A last resort is to<br>
+	# sleep for some time.<br>
+	start-stop-daemon --stop --quiet --oknodo --retry=0/30/KILL/5 --exec $DAEMON<br>
+        if (ps ax | egrep -v 'grep|/bin/sh' | grep -iq streamingadminserver.pl); then<br>
+            kill $(ps ax | grep "/usr/bin/perl 
+/usr/local/sbin/streamingadminserver.pl" 2&gt;/dev/null| grep -v grep| 
+awk '{print $1}')<br>
+        fi<br>
+	[ "$?" = 2 ] &amp;&amp; return 2<br>
+	# Many daemons don't delete their pidfiles when they exit.<br>
+	rm -f $PIDFILE<br>
+        sleep 2<br>
+        if (ps aux | egrep -v 'grep|/bin/sh' | grep -iq streamingadminserver); then<br>
+	    if (ps aux | egrep -v 'grep|/bin/sh' | grep -iq DarwinStreamingServer); then<br>
+        	echo "ERROR: DarwinStreamingServer still running"<br>
+        	ps aux | egrep -v 'grep|/bin/sh' | grep -i DarwinStreamingServer<br>
+    	    else<br>
+        	echo "DarwinStreamingServer stopped"<br>
+    	    fi<br>
+        else<br>
+            echo "DarwinStreamingServer stopped"<br>
+        fi<br>
+	return "$RETVAL"<br>
+}<br>
+#<br>
+# Function that sends a SIGHUP to the daemon/service<br>
+#<br>
+do_reload() {<br>
+	#<br>
+	# If the daemon can reload its configuration without<br>
+	# restarting (for example, when it is sent a SIGHUP),<br>
+	# then implement that here.<br>
+	#<br>
+	start-stop-daemon --stop --signal 1 --quiet --pidfile $PIDFILE --name $NAME<br>
+	return 0<br>
+}<br>
+# Start|stop|restart|reload|status<br>
+case "$1" in<br>
+  start)<br>
+	[ "$VERBOSE" != no ] &amp;&amp; log_daemon_msg "Starting $DESC" "$NAME"<br>
+	do_start<br>
+	case "$?" in<br>
+		0|1) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 0 ;;<br>
+		2) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 1 ;;<br>
+	esac<br>
+	;;<br>
+  stop)<br>
+	[ "$VERBOSE" != no ] &amp;&amp; log_daemon_msg "Stopping $DESC" "$NAME"<br>
+	do_stop<br>
+	case "$?" in<br>
+		0|1) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 0 ;;<br>
+		2) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 1 ;;<br>
+	esac<br>
+	;;<br>
+  #reload|force-reload)<br>
+	#<br>
+	# If do_reload() is not implemented then leave this commented out<br>
+	# and leave 'force-reload' as an alias for 'restart'.<br>
+	#<br>
+	#log_daemon_msg "Reloading $DESC" "$NAME"<br>
+	#do_reload<br>
+	#log_end_msg $?<br>
+	#;;<br>
+  restart|force-reload)<br>
+	#<br>
+	# If the "reload" option is implemented then remove the<br>
+	# 'force-reload' alias<br>
+	#<br>
+	log_daemon_msg "Restarting $DESC" "$NAME"<br>
+	do_stop<br>
+	case "$?" in<br>
+	  0|1)<br>
+		do_start<br>
+		case "$?" in<br>
+			0) log_end_msg 0 ;;<br>
+			1) log_end_msg 1 ;; # Old process is still running<br>
+			*) log_end_msg 1 ;; # Failed to start<br>
+		esac<br>
+		;;<br>
+	  *)<br>
+	  	# Failed to stop<br>
+		log_end_msg 1<br>
+		;;<br>
+	esac<br>
+	;;<br>
+    status)<br>
+        ps ax | egrep -v 'grep|/bin/sh' | grep -i streaming &amp;&amp; 
+echo "DarwinStreamingServer not running" || echo "DarwinStreamingServer 
+not running"<br>
+        ;;<br>
+#<br>
+  *)<br>
+	#echo "Usage: $SCRIPTNAME {start|stop|restart|reload|force-reload|status}" &gt;&amp;2<br>
+	echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload|status}" &gt;&amp;2<br>
+	exit 3<br>
+	;;<br>
+esac<br>
+</michel@itmatrix.de></code></p>
+<p><strong>Note:</strong> If you had the Darwin Streaming Server version
+ 5.x.x installed before, it is possible that some modules of that 
+version are still in the directory:<strong><em>/usr/local/sbin/StreamingServerModules</em></strong>.<br>
+Make sure they are deleted before you start the server.<br>
+If they are not deleted, no big deal. You're simply going to get some 
+errors in the streaming server error logs when starting the server. Eg.<br>
+<code>"WARNING: The module QTSSRefMovieModule is not a compatible QTSS API module."<br>
+"WARNING: The module QTSSHomeDirectoryModule is not a compatible QTSS API module."</code><br>
+For more information on how to create and install new Dynamic modules a good start is at:<br>
+<a href="http://www.codeproject.com/Articles/41874/Darwin-Streaming-Server-6-0-3-setup-customization" title="Darwin Streaming Server Installation">http://www.codeproject.com/Articles/41874/Darwin-Streaming-Server-6-0-3-setup-customization</a></p>
+<hr>
+<strong>So here are some extra important info:</strong><br>
+<strong>/usr/local/sbin/</strong>: server executable (DarwinStreamingServer) and admin server (streamingadminserver.pl)<br>
+<strong>/usr/local/sbin/StreamingServerModules/</strong>: Dynamically loadable modules.<br>
+<strong>/usr/local/movies</strong>: default content directory (where streams are served from, already contains sample hinted streams)<br>
+<strong>/usr/local/bin/</strong>: some other binaries, including "StreamingLoadTool" - a load test tool<br>
+<strong>/etc/streaming/streamingserver.xml</strong>: Configuration file for DSS<br>
+<strong>/etc/streaming/streamingloadtool.conf</strong>: Configuration file for the load test tool StreamingLoadTool),<br>
+<strong>/etc/streaming/qtusers</strong>: Authentication users file for DSS<br>
+<strong>/etc/streaming/qtgroups</strong>: Authentication groups file for DSS<br>
+(at this point only the admin user and group created during installation will be present)<br>
+<strong>/var/streaming/logs/</strong>: DSS logs folder<br>
+(StreamingServer.log, Error.log are the most important, also has streamingadminserver.log and mp3_access.log)<p></p>
+<p><em><strong>PORTS:</strong></em><br>
+<strong>Port 554</strong>: Standard Video streaming port<br>
+<strong>Port 1220</strong>: Web Admin port (login with the administrator's name and password you gave during the Install process)</p>
+<p>As DSS uses the RTSP protocol to stream (unless you're streaming via port 80)<br>
+you must have the following ports open on your firewall 1220, 554, 7070, 8000, 8001<br>
+then anything starting from 6970 &amp; up depending on how many clients you want to support.</p>
+<p>QuickTime Streaming Server and Darwin Streaming Server use the following TCP ports:<br>
+See also: http://www.soundscreen.com/streaming/firewall.html</p>
+<p>    <strong>80</strong>: HTTP - If activated(Warning:can conflict with running web server)<br>
+    <strong>554</strong>: Standard RTSP port<br>
+    <strong>6970 - 9999</strong>: used for dynamic (announced) UDP broadcasts<br>
+    <strong>7070</strong>: Optionally used for RTSP<br>
+    <strong>8000, 8001</strong>: MP3 streaming<br>
+    <strong>10,000 - 20,000</strong>: buffer space<br>
+    <strong>20,000 - 65,535</strong>: static SDP default range (user defined)</p>
+<p><strong>TCP:</strong><br>
+<code>tcp        0      0 0.0.0.0:554             0.0.0.0:*               LISTEN      22082/DarwinStreami<br>
+tcp        0      0 0.0.0.0:1220            0.0.0.0:*               LISTEN      22081/perl<br>
+tcp        0      0 0.0.0.0:7070            0.0.0.0:*               LISTEN      22082/DarwinStreami<br>
+tcp        0      0 0.0.0.0:8000            0.0.0.0:*               LISTEN      22082/DarwinStreami<br>
+tcp        0      0 0.0.0.0:8001            0.0.0.0:*               LISTEN      22082/DarwinStreami<br>
+</code><br>
+<strong>UDP:</strong><br>
+<code>udp        0      0 192.168.100.115:6970    0.0.0.0:*                           22082/DarwinStreami<br>
+udp        0      0 192.168.100.115:6971    0.0.0.0:*                           22082/DarwinStreami</code></p>
+<p></p><h3>HTML Streaming component embedding</h3><br>
+In order to play a live stream fed by a streaming source for example: 
+Apple Quicktime Broadcaster, here is an example of an HTML embedded 
+Quicktime component code that upon clicking into the component start the
+ connection to the streaming server. The live streaming source program 
+must provide the same filename as the one provided in the component to 
+have a successful streaming connection.<p></p>
+<p><strong>Detached video window HTML code:</strong><br>
+<code>&lt;HTML&gt;&lt;head&gt;<br>
+                &lt;meta http-equiv="content-type" content="text/html;charset=iso-8859-1"&gt;<br>
+                &lt;title&gt;Streaming&lt;/title&gt;<br>
+                &lt;script src="mediaCode.js" type="text/javascript"&gt;&lt;/script&gt;<br>
+                &lt;style type="text/css" title="text/css"&gt;<br>
+                body {background: #bbb;}<br>
+                p { font-family:Verdana, Arial, sans-serif; font-size:10px; padding:0;margin-top:4px;}<br>
+                &lt;/style&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+                &lt;CENTER&gt;&lt;B&gt;&lt;FONT color="green" 
+face="verdana" size="3"&gt;L I V E&lt;/FONT&gt;&lt;/B&gt;&lt;br&gt;<br>
+                &lt;p&gt;(Well, almost live... approx. 10 sec. delay)&lt;/p&gt;<br>
+                &lt;noscript&gt;<br>
+                        &lt;p style="color:red;"&gt;You need to enable Javascript to see this content&lt;p&gt;<br>
+                &lt;/noscript&gt;<br>
+                &lt;TABLE border=1 cellpading=0 cellspacing=0&gt;&lt;TR&gt;&lt;TD&gt;<br>
+                                &lt;script language="JavaScript"type="text/javascript"&gt;<br>
+                                        &lt;!--<br>
+                                                var myArray = new Array();<br>
+                                                myArray["data"] = "Graph/Poster.mov";<br>
+                                                myArray["title"] = "Live Streaming";<br>
+                                                myArray["height"] = "270";<br>
+                                                myArray["width"] = "320";<br>
+                                                myArray["controller"] = "true";<br>
+                                                myArray["loop"] = "false";<br>
+                                                myArray["href"] = "rtsp://www.berlin-radio.net:554/stream1.sdp";<br>
+                                                writeMediaCode(myArray);<br>
+                                        //--&gt;<br>
+                                &lt;/script&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
+                &lt;/TABLE&gt;<br>
+                &lt;p&gt;Click in the above box to start viewing/listening the streaming.&lt;BR&gt;<br>
+                        &lt;B&gt;NOTE:&lt;/B&gt;&lt;I&gt; If it happens that you lose the sound,<br>
+                        reload this web page and click in the above box again.<br>
+                &lt;I&gt;&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/HTML&gt;<br>
+</code><br>
+<strong>Content of JavaScript File: mediaCode.js</strong><br>
+<code>var objectArr = new Array();<br>
+var paramArr = new Array();<br>
+var embedArr = new Array();<br>
+function writeMediaCode(myArray)<br>
+{<br>
+	objectArr["data"] = myArray["data"];<br>
+	objectArr["type"] = "video/quicktime";<br>
+	objectArr["title"] = myArray["title"];<br>
+	objectArr["classid"] = "clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B";<br>
+	objectArr["height"] = myArray["height"];<br>
+	objectArr["width"] = myArray["width"];<br>
+	paramArr["src"] = objectArr["data"];<br>
+	paramArr["autoplay"] = "true";<br>
+	paramArr["controller"] = myArray["controller"];<br>
+	paramArr["loop"] = myArray["loop"];<br>
+	paramArr["target"] = "myself";<br>
+	paramArr["href"] = myArray["href"];<br>
+	paramArr["pluginspage"] = "http://www.apple.com/quicktime/download/";<br>
+	//paramArr["bgcolor"] = "996633";<br>
+	embedArr["src"] = objectArr["data"];<br>
+	embedArr["type"] = objectArr["type"];<br>
+	embedArr["classid"] = objectArr["classid"];<br>
+	embedArr["title"] = objectArr["title"];<br>
+	embedArr["height"] = objectArr["height"];<br>
+	embedArr["width"] = objectArr["width"];<br>
+	embedArr["autoplay"] = paramArr["autoplay"];<br>
+	embedArr["controller"] = paramArr["controller"];<br>
+	embedArr["loop"] = paramArr["loop"];<br>
+	embedArr["target"] = paramArr["target"];<br>
+	embedArr["href"] = paramArr["href"];<br>
+	embedArr["pluginspage"] = paramArr["pluginspage"];<br>
+	//embedArr["bgcolor"] = paramArr["bgcolor"];<br>
+	// object tag<br>
+	document.write('&lt;object');<br>
+	for(name in objectArr)<br>
+	{<br>
+		document.write(' '+name+'="'+objectArr[name]+'"');<br>
+	}<br>
+	document.write('&gt;\n');<br>
+	// params<br>
+	for(name in paramArr)<br>
+	{<br>
+		document.write('&lt;param name="'+name+'" value="'+paramArr[name]+'"&gt;\n');<br>
+	}<br>
+	// embed<br>
+	document.write('&lt;embed');<br>
+	for(name in embedArr)<br>
+	{<br>
+		document.write(' '+name+'="'+embedArr[name]+'"');<br>
+	}<br>
+	document.write('&lt;/embed&gt;\n');<br>
+	// end<br>
+	document.write('&lt;/object&gt;\n');<br>
+}<br>
+</code></p>
+<div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-11200918-1102-55128e8d9961f" data-src="//widgets.wp.com/likes/#blog_id=11200918&amp;post_id=1102&amp;origin=tipstricks.itmatrix.eu&amp;obj_id=11200918-1102-55128e8d9961f" data-name="like-post-frame-11200918-1102-55128e8d9961f"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-11200918-1102-55128e8d9961f" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/a.htm" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>                                </div>
+                <div style="clear:both;"></div>
+                <div class="postmeta">Filed in <a href="https://tipstricks.itmatrix.eu/category/linux-tips/" rel="category tag">Linux</a>, <a href="https://tipstricks.itmatrix.eu/category/linux-tips/streaming/" rel="category tag">Streaming</a> with <a href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/#comments" title="Comment on Compiling and Installing Darwin Streaming Server on Debian Squeeze">5 Comments</a> </div>
+			</div>                
+
+            <div class="navigation">
+                <div class="alignleft">« <a href="https://tipstricks.itmatrix.eu/configuring-apache2-mod_deflate/" rel="prev">Configuring Apache2 mod_deflate</a></div>
+                <div class="alignright"><a href="https://tipstricks.itmatrix.eu/installing-googles-apache-mod_pagespeed-module/" rel="next">Installing Google’s Apache mod_pagespeed module.</a> »</div>
+            </div>
+
+			
+<!-- You can start editing here. -->
+
+   
+		<h3 id="comments">Reader's Comments</h3>
+    <ol class="commentlist">
+    		<li class="comment even thread-even depth-1" id="comment-2682">
+	        <img id="grav-33aaefffba87b011bb5a30560df7ddda-0" alt="" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/33aaefffba87b011bb5a30560df7ddda.png" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32">			<strong class="commentmetadata"><span class="comment odd alt thread-odd thread-alt depth-1"><a href="https://plus.google.com/116356815745873290743" rel="external nofollow" class="url">Unstable Ambrose</a></span></strong>&nbsp;  &nbsp; <small class="commentmetadata"><a href="#comment-2682" title=""># 29 Aug 2014 18:23</a> </small>
+			
+			<p>thanks for this great tutorial sir. everything went good while 
+installation but wen i open url in browser  iam geting this error sir 
+please reply me <a href="http://192.168.1.4:1220/parse_xml.cgi?filename=setup_assistant2.html" rel="nofollow">http://192.168.1.4:1220/parse_xml.cgi?filename=setup_assistant2.html</a><br>
+thanks :)</p>
+            <small class="replycomment"><a class="comment-reply-link" href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/?replytocom=2682#respond" onclick='return addComment.moveForm( "comment-2682", "2682", "respond", "1102" )' aria-label="Reply to Unstable Ambrose">Reply to this comment</a></small>
+       </li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-2684">
+	        <img id="grav-33aaefffba87b011bb5a30560df7ddda-1" alt="" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/33aaefffba87b011bb5a30560df7ddda.png" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32">			<strong class="commentmetadata"><span class="comment odd alt thread-odd thread-alt depth-1"><a href="https://plus.google.com/116356815745873290743" rel="external nofollow" class="url">Unstable Ambrose</a></span></strong>&nbsp;  &nbsp; <small class="commentmetadata"><a href="#comment-2684" title=""># 29 Aug 2014 20:05</a> </small>
+			
+			<p>this is my error screensnap sir <a href="http://i.imgur.com/si4VmPz.jpg" rel="nofollow">http://i.imgur.com/si4VmPz.jpg</a></p>
+            <small class="replycomment"><a class="comment-reply-link" href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/?replytocom=2684#respond" onclick='return addComment.moveForm( "comment-2684", "2684", "respond", "1102" )' aria-label="Reply to Unstable Ambrose">Reply to this comment</a></small>
+       <ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-2772">
+	        <img id="grav-44834404a3e3660f7d57cefe22a2c074-0" alt="" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/44834404a3e3660f7d57cefe22a2c074.jpg" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32">			<strong class="commentmetadata"><span class="comment byuser comment-author-admin bypostauthor odd alt depth-2">admin</span></strong>&nbsp;  &nbsp; <small class="commentmetadata"><a href="#comment-2772" title=""># 10 Sep 2014 11:40</a> </small>
+			
+			<p>Unfortunately I have no idea what your error message/no-message means.<br>
+I have put these instructions which worked for Debian Squeeze<br>
+but if something goes wrong I need to look at each message individually.<br>
+In your case I don’t see any indications of what went wrong.<br>
+I would suggest taking a look at /var/log/syslog<br>
+to see if any error message appears about this installation.<br>
+Good luck.</p>
+            <small class="replycomment"><a class="comment-reply-link" href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/?replytocom=2772#respond" onclick='return addComment.moveForm( "comment-2772", "2772", "respond", "1102" )' aria-label="Reply to admin">Reply to this comment</a></small>
+       </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-3278">
+	        <img id="grav-1b7728c37a42cb323843c359fb9300e2-0" alt="" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/1b7728c37a42cb323843c359fb9300e2.png" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32">			<strong class="commentmetadata"><span class="comment odd alt thread-odd thread-alt depth-1">Roberto Poche</span></strong>&nbsp;  &nbsp; <small class="commentmetadata"><a href="#comment-3278" title=""># 19 Nov 2014 05:46</a> </small>
+			
+			<p>I am facing the same error, is there a solution please?</p>
+            <small class="replycomment"><a class="comment-reply-link" href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/?replytocom=3278#respond" onclick='return addComment.moveForm( "comment-3278", "3278", "respond", "1102" )' aria-label="Reply to Roberto Poche">Reply to this comment</a></small>
+       <ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-3390">
+	        <img id="grav-44834404a3e3660f7d57cefe22a2c074-1" alt="" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/44834404a3e3660f7d57cefe22a2c074.jpg" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32">			<strong class="commentmetadata"><span class="comment byuser comment-author-admin bypostauthor odd alt depth-2">admin</span></strong>&nbsp;  &nbsp; <small class="commentmetadata"><a href="#comment-3390" title=""># 27 Nov 2014 10:48</a> </small>
+			
+			<p>Unfortunately I don’t have any solution. It’s been a long time ago since I’ve left the streaming field. Sorry.</p>
+            <small class="replycomment"><a class="comment-reply-link" href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/?replytocom=3390#respond" onclick='return addComment.moveForm( "comment-3390", "3390", "respond", "1102" )' aria-label="Reply to admin">Reply to this comment</a></small>
+       </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    </ol>
+	    
+	    
+	<div style="clear:both"></div>
+	<div class="commentsnavigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+   	<div style="clear:both"></div>
+    
+ 
+					
+		<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://tipstricks.itmatrix.eu/compiling-and-installing-darwin-streaming-server-on-debian-squeeze/#respond" style="display:none;">Cancel reply</a></small></h3>
+			<div id="commentform" class="comment-form">
+				<iframe src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/a_002.htm" allowtransparency="false" style="width: 100%; height: 56px; border: 0px none;" scrolling="no" name="jetpack_remote_comment" id="jetpack_remote_comment" frameborder="0"></iframe>
+			<input value="1427279580362" name="ak_js" id="ak_js" type="hidden"></div>
+		</div>
+
+		
+		<input name="comment_parent" id="comment_parent" value="" type="hidden">
+
+		
+		
+				
+			<div style="clear:both"></div>
+			<div class="navigation">
+			</div>
+    </div>
+      
+	    <div class="sidebar span-8 last">
+		<div class="sidebarboxtop"><img src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/sidebartop.gif" alt="sidebartop"></div><div class="sidebarbox"><h3>Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/" title="Linux Tips and tricks, either for desktop or internal system.">Linux</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/apache-tips/" title="Apache 1.3 and 2.x Tips and tricks">Apache</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/bash/" title="Bash tips and tricks">Bash</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/git/">GIT</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/monitoring/">Monitoring</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/mysql-tips/" title="Mysql Tips and tricks mostly used in Linux">MySQL</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/nginx-linux-tips/">NGinX</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/postfix/" title="Mail Server Postfix Tricks">Postfix</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/streaming/">Streaming</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/svn/" title="SVN tips and tricks">SVN</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/vmware/">VMWare</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/xen-tips/" title="List of XEN Virtualization tips and tricks">XEN</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://tipstricks.itmatrix.eu/category/linux-tips/zimbra-linux-tips/" title="Tips on how to Install/configure Zimbra Mail system">ZIMBRA</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://tipstricks.itmatrix.eu/category/linux-on-macbook/" title="Tips on how to install and run Linux on MACBooks">Linux on MACBook</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://tipstricks.itmatrix.eu/category/macosx-tips/" title="Mac hardware and softwaer tweeks in order to get what we want out of MAC.">MAC OS X</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="https://tipstricks.itmatrix.eu/category/nginx/">NGinX</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://tipstricks.itmatrix.eu/category/uncategorized/">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://tipstricks.itmatrix.eu/category/windows-tips/" title="Windows XP, Vista or 7 tips and tricks">Windows</a>
+</li>
+		</ul>
+</div><div class="sidebarboxbottom"><img src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/sidebarbottom.gif" alt="sidebarbottom"></div><div class="sidebarboxtop"><img src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/sidebartop.gif" alt="sidebartop"></div><div class="sidebarbox"><form method="get" id="search" action="https://tipstricks.itmatrix.eu/">
+<label class="hidden" for="s">Search for:</label>
+<div><input name="s" type="text">
+<input value="Search" type="submit">
+</div>
+</form>
+</div><div class="sidebarboxbottom"><img src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/sidebarbottom.gif" alt="sidebarbottom"></div><div class="sidebarboxtop"><img src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/sidebartop.gif" alt="sidebartop"></div><div class="sidebarbox"><h3><a class="rsswidget" href="http://tipstricks.itmatrix.eu/?feed=rss2"><img style="border:0" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/rss.png" alt="RSS" height="14" width="14"></a> <a class="rsswidget" href="https://tipstricks.itmatrix.eu/">Tips &amp; Tricks</a></h3><ul><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/resolve-the-ip-from-a-hostname/">Resolve the IP from a hostname</a> <span class="rss-date">March 20, 2015</span></li><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/changing-the-keyboard-layout-of-terminal-in-ubuntu/">Changing the keyboard layout of Terminal in Ubuntu</a> <span class="rss-date">March 15, 2015</span></li><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/install-adaptec-acc-raid-utility-arcconf-in-ubuntu-14-04/">Install Adaptec ACC-RAID utility – arcconf – in Ubuntu 14.04</a> <span class="rss-date">March 13, 2015</span></li><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/bootstrapping-ubuntu-14-04-for-vm-use/">Bootstrapping Ubuntu 14.04 for VM use.</a> <span class="rss-date">March 13, 2015</span></li><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/proxy-rewrite-to-an-url-with-a-non-valid-cert/">Proxy Rewrite to an URL with a non valid Cert</a> <span class="rss-date">February 26, 2015</span></li><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/creating-a-mavericks-mac-os-x-install-usb-stick/">Creating a Mavericks MAC OS X Install USB Stick</a> <span class="rss-date">February 22, 2015</span></li><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/entering-a-new-certificate-in-java-keystore/">Entering a new certificate in Java Keystore</a> <span class="rss-date">January 22, 2015</span></li><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/changing-keyboard-layout-in-ubuntudebian-linux-comand-line/">Changing keyboard layout in Ubuntu/Debian Linux comand line</a> <span class="rss-date">January 22, 2015</span></li><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/instal-skype-in-xubuntu-14-10-lts/">Instal Skype in Xubuntu 14.10 LTS</a> <span class="rss-date">January 15, 2015</span></li><li><a class="rsswidget" href="https://tipstricks.itmatrix.eu/verifying-the-ssl-certificate-chain/">Verifying a SSL certificate chain</a> <span class="rss-date">December 12, 2014</span></li></ul></div><div class="sidebarboxbottom"><img src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/sidebarbottom.gif" alt="sidebarbottom"></div>    </div>
+</div> <!-- container -->
+<div class="footerpush"></div>
+</div> <!--wrapper -->
+
+<div class="footer">
+	<div class="footercontent">
+    © <a href="https://tipstricks.itmatrix.eu/" title="Home">IT Tips and Tricks</a> / Design: <a href="http://ericulous.com/2008/09/09/wp-theme-google-chrome" title="Smashing Wordpress Themes">Smashing Wordpress Themes</a>
+    </div>
+</div>
+
+	<div style="display:none">
+	<div class="grofile-hash-map-33aaefffba87b011bb5a30560df7ddda">
+	</div>
+	<div class="grofile-hash-map-44834404a3e3660f7d57cefe22a2c074">
+	</div>
+	<div class="grofile-hash-map-1b7728c37a42cb323843c359fb9300e2">
+	</div>
+	</div>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/form.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/comment-reply.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/wpgroho.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/postmessage.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/jquery.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/jquery_003.js"></script>
+<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/queuehandler.js"></script>
+		<iframe src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/master.htm" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		
+		<!--[if IE]>
+		<script type="text/javascript">
+		if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+			// window.location.reload() doesn't respect the Hash in IE
+			window.location.hash = window.location.hash;
+		}
+		</script>
+		<![endif]-->
+		<script type="text/javascript">
+			var comm_par_el = document.getElementById( 'comment_parent' ),
+			    comm_par = (comm_par_el && comm_par_el.value) ? comm_par_el.value : '',
+			    frame = document.getElementById( 'jetpack_remote_comment' ),
+			    tellFrameNewParent;
+
+			tellFrameNewParent = function() {
+				if ( comm_par ) {
+					frame.src = "https://jetpack.wordpress.com/jetpack-comment/?blogid=11200918&postid=1102&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=identicon&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en-US&jetpack_version=3.4.1&sig=42d3cef557f9f900f3d662c90d3e9f8988b004e1#parent=https%3A%2F%2Ftipstricks.itmatrix.eu%2Fcompiling-and-installing-darwin-streaming-server-on-debian-squeeze%2F" + '&replytocom=' + parseInt( comm_par, 10 ).toString();
+				} else {
+					frame.src = "https://jetpack.wordpress.com/jetpack-comment/?blogid=11200918&postid=1102&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=identicon&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en-US&jetpack_version=3.4.1&sig=42d3cef557f9f900f3d662c90d3e9f8988b004e1#parent=https%3A%2F%2Ftipstricks.itmatrix.eu%2Fcompiling-and-installing-darwin-streaming-server-on-debian-squeeze%2F";
+				}
+			};
+
+	
+			if ( 'undefined' !== typeof addComment ) {
+				addComment._Jetpack_moveForm = addComment.moveForm;
+
+				addComment.moveForm = function( commId, parentId, respondId, postId ) {
+					var returnValue = addComment._Jetpack_moveForm( commId, parentId, respondId, postId ), cancelClick, cancel;
+
+					if ( false === returnValue ) {
+						cancel = document.getElementById( 'cancel-comment-reply-link' );
+						cancelClick = cancel.onclick;
+						cancel.onclick = function() {
+							var cancelReturn = cancelClick.call( this );
+							if ( false !== cancelReturn ) {
+								return cancelReturn;
+							}
+
+							if ( !comm_par ) {
+								return cancelReturn;
+							}
+
+							comm_par = 0;
+
+							tellFrameNewParent();
+
+							return cancelReturn;
+						};
+					}
+
+					if ( comm_par == parentId ) {
+						return returnValue;
+					}
+
+					comm_par = parentId;
+
+					tellFrameNewParent();
+
+					return returnValue;
+				};
+			}
+
+	
+			if ( window.postMessage ) {
+				if ( document.addEventListener ) {
+					window.addEventListener( 'message', function( event ) {
+						if ( "https:\/\/jetpack.wordpress.com" !== event.origin ) {
+							return;
+						}
+
+						jQuery( frame ).height( event.data );
+					} );
+				} else if ( document.attachEvent ) {
+					window.attachEvent( 'message', function( event ) {
+						if ( "https:\/\/jetpack.wordpress.com" !== event.origin ) {
+							return;
+						}
+
+						jQuery( frame ).height( event.data );
+					} );
+				}
+			}
+		</script>
+
+	<script type="text/javascript" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/e-201513.js" async="" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.4.1',blog:'11200918',post:'1102',tz:'1'} ]);
+	_stq.push([ 'clickTrackerInit', '11200918', '1102' ]);
+</script>
+
+
+
+
+
+<iframe tabindex="-1" style="position: absolute; width: 0px; height: 0px; border: medium none;" id="wp_cirrus_gwt" src="javascript:''"></iframe><img id="wpstats" src="Compiling%20and%20Installing%20Darwin%20Streaming%20Server%20on%20Debian%20Squeeze%20%C2%BB%20IT%20Tips%20and%20Tricks_files/g.gif"></body></html>
+<!-- Dynamic page generated in 0.260 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2015-03-25 11:31:41 -->
+<!-- super cache -->

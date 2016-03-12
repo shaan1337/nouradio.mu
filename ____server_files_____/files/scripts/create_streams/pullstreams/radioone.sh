@@ -1,0 +1,2 @@
+echo Launching radioone
+while true;do /root/bin/ffmpeg -loglevel warning -i http://204.45.126.170:8081/stream -c:a libfdk_aac -ac 1 -ar 48000 -b:a 96k  -flags:a +global_header -vn -f flv - -c:a libfdk_aac -ac 1 -ar 22050 -b:a 32k  -vn -f flv rtmp://127.0.0.1:1935/live/radioone_low|/root/bin/ffmpeg -loglevel warning -i - -c copy -f flv rtmp://127.0.0.1:1935/live/radioone -c copy -f rtp rtp://127.0.0.1:20000; sleep 60; done

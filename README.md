@@ -1,6 +1,8 @@
 # Nouradio.mu
 
-This repository contains full code for the website nouradio.mu (Hosting discontinued)
+This repository contains full code for the website nouradio.mu **(Hosting discontinued)**
+
+**Nouradio.mu** contains all Mauritian radios on a single web page in an easy-to-use interface. The website is compatible with most devices: including mobile phones, desktops and tablets.
 
 ### How it works
 **Live web radio streams (Radio Plus, Radio One, Top FM & MBC Radios) are pulled (using FFMPEG) , re-encoded to AAC and pushed (in Low & High Quality streams) to:**
